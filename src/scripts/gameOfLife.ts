@@ -49,8 +49,8 @@ export const runSimulationOnce = ({ aliveCells, rows, columns }: Data): Set<stri
     const [i, j] = aliveCell.split("-");
 
     const neighbors = operations.reduce((neighbors, [y, x]) => {
-      const neighborY = (y + Number(i) + columns) % columns;
-      const neighborX = (x + Number(j) + rows) % rows;
+      const neighborY = (y + Number(i) + rows) % rows;
+      const neighborX = (x + Number(j) + columns) % columns;
       const neighborKey = toCellKey(neighborY, neighborX);
 
       if (aliveCells.has(neighborKey)) {
@@ -108,8 +108,8 @@ export const useGameOfLife = (
   const setRandomData = () => {
     clearData();
     const newSet = new Set<string>();
-    for (let i = 0; i < columns; i++) {
-      for (let j = 0; j < rows; j++) {
+    for (let i = 0; i < rows; i++) {
+      for (let j = 0; j < columns; j++) {
         if (Math.random() > 0.7) newSet.add(toCellKey(i, j));
       }
     }

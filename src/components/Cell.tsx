@@ -8,8 +8,8 @@ export const Cell = styled.button`
 
   border: 1px solid #262626;
   cursor: pointer;
-  height: 24px;
-  width: 24px;
+  height: var(--cell-size, 24px);
+  width: var(--cell-size, 24px);
 
   transition: background-color 0.1s ease-out;
 
