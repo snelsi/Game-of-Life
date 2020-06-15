@@ -20,26 +20,22 @@ const App: React.FC = () => {
   const handleCellClick = (row: number, column: number) =>
     has(toCellKey(row, column)) ? setCellDead(row, column) : setCellAlive(row, column);
 
+  const randomize = () => setRandomData();
+  const clear = () => clearData();
+  const toggleRun = () => setRunning(!running);
+
   return (
     <Container>
       <Header>
         <h2>The Game of Life</h2>
         <div>
-          <RandomizeButton
-            onClick={() => {
-              setRandomData();
-            }}
-          />
-          <ResetButton
-            onClick={() => {
-              clearData();
-            }}
-          />
+          <RandomizeButton onClick={randomize} />
+          <ResetButton onClick={clear} />
         </div>
       </Header>
       <Table aliveCells={aliveCells} onCellClick={handleCellClick} rows={rows} columns={columns} />
       <ButtonsGroup>
-        <PlayButton onClick={() => setRunning(!running)} play={running} />
+        <PlayButton onClick={toggleRun} play={running} />
       </ButtonsGroup>
     </Container>
   );
