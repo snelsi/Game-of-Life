@@ -22,13 +22,7 @@ export const Table: React.FC<TableProps> = ({ aliveCells, onCellClick, rows, col
           const key = toCellKey(i, j);
           const alive = aliveCells.has(key);
 
-          return (
-            <Cell
-              key={key}
-              className={alive ? "alive" : ""}
-              onMouseDown={() => onCellClick(i, j)}
-            />
-          );
+          return <Cell key={key} alive={alive} onClick={() => onCellClick(i, j)} />;
         }),
       )}
     </Grid>
@@ -36,9 +30,11 @@ export const Table: React.FC<TableProps> = ({ aliveCells, onCellClick, rows, col
 };
 
 export const Grid = styled.div`
-  border: 2px solid #393939;
+  background-color: #e1e4e8;
+  border: 1px solid #393939;
   display: grid;
   grid-template-columns: repeat(50, var(--cell-size, 24px));
+  gap: 1px;
 
   max-height: calc(100vh - 112px);
 
