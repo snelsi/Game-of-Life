@@ -15,7 +15,7 @@ const App: React.FC = () => {
 
   useInterval(() => {
     if (running) simulateOnce();
-  }, 250);
+  }, 200);
 
   const handleCellClick = (row: number, column: number) =>
     has(toCellKey(row, column)) ? setCellDead(row, column) : setCellAlive(row, column);
