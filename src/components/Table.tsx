@@ -11,7 +11,10 @@ export interface TableProps {
   columns: number;
 }
 export const Table: React.FC<TableProps> = ({ aliveCells, onCellClick, rows, columns }) => {
-  const arrayPlaceholder = Array.from({ length: rows }).map(() => Array.from({ length: columns }));
+  const arrayPlaceholder = React.useMemo(
+    () => Array.from({ length: rows }).map(() => Array.from({ length: columns })),
+    [rows, columns],
+  );
   return (
     <Grid>
       {arrayPlaceholder.map((rows, i: number) =>
